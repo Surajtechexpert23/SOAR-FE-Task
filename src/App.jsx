@@ -15,7 +15,7 @@ const App = () => {
         <SideBar />
         <div className="flex-1">
           <NavBar />
-          <main className="p-6">
+          <main className="p-6 ">
             <Routes>
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/settings" element={<Settings />} />
