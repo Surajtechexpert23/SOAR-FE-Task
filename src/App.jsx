@@ -2,10 +2,9 @@ import React, { useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SideBar from "./components/sidebar/SideBar";
 import NavBar from "./components/navbar/Navbar";
-import CreditCards from "./components/cards/CreditCards";
+import Dashboard from "./pages/Dashboard";
 
 // Dummy components for different routes
-const Dashboard = () => <div>Dashboard Content</div>;
 const Settings = () => <div>Settings Content</div>;
 
 const App = () => {
@@ -18,7 +17,7 @@ const App = () => {
           <NavBar />
           <main className="p-6">
             <Routes>
-              <Route path="/dashboard" element={<CreditCards />} />
+              <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/settings" element={<Settings />} />
             </Routes>
           </main>
