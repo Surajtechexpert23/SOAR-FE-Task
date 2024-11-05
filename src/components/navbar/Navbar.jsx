@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom"; 
-import { HiMenu, HiSearch, HiCog, HiBell, } from "react-icons/hi";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { HiMenu, HiSearch, HiCog, HiBell } from "react-icons/hi";
 
 const NavBar = ({ onToggle }) => {
   const [currentLocation, setCurrentLocation] = useState("");
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setCurrentLocation(location.pathname.replace("/", ""));
@@ -31,13 +32,20 @@ const NavBar = ({ onToggle }) => {
             className="pr-2 py-3 m-2 rounded-full disable bg-gray-100 placeholder:text-gray-400 placeholder:pl-12 "
           />
         </div>
-        <div className="bg-gray-100 rounded-full p-3 hidden md:flex">
+        <div
+          className="bg-gray-100 rounded-full p-3 hidden md:flex"
+          onClick={() => navigate("/settings")}
+        >
           <HiCog className="mx-4 text-gray-500 cursor-pointer text-3xl" />
         </div>
         <div className="bg-gray-100 rounded-full p-3 ml-2 hidden md:flex">
           <HiBell className="mx-4 text-gray-500 cursor-pointer text-3xl" />
         </div>
-        <img src={"https://i.pravatar.cc/50?u=1"} alt="avatar" className="rounded-full ml-2" />
+        <img
+          src={"https://i.pravatar.cc/50?u=1"}
+          alt="avatar"
+          className="rounded-full ml-2"
+        />
       </div>
     </nav>
   );
