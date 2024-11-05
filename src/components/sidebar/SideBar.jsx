@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "../../assets/Logo.png";
 import { TiHome } from "react-icons/ti";
 import { FaMoneyBill } from "react-icons/fa";
@@ -10,7 +10,26 @@ import { MdOutlineDesignServices } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
 
 const SideBar = () => {
+  const location = useLocation();
   const [activeTab, setActiveTab] = useState("Dashboard");
+
+  useEffect(() => {
+    switch (location.pathname) {
+      case "/dashboard":
+        setActiveTab("Dashboard");
+        break;
+      case "/credit_cards":
+        setActiveTab("Credit Cards");
+        break;
+      case "/settings":
+        setActiveTab("Settings");
+        break;
+      // Add other cases as necessary
+      default:
+        setActiveTab("Dashboard");
+    }
+  }, [location.pathname]); // Re-run effect when the pathname changes
+
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
@@ -36,7 +55,7 @@ const SideBar = () => {
           <p className="ml-3">Dashboard</p>
         </Link>
         {/* Transactions Tab */}
-        <Link
+        <button
           to="#"
           className={`flex items-center p-3 cursor-pointer transition w-full ${
             activeTab === "Transactions"
@@ -47,9 +66,9 @@ const SideBar = () => {
         >
           <FaMoneyBill className="text-3xl ml-[18px] rotate-90 " />
           <p className="ml-3">Transactions</p>
-        </Link>
+        </button>
         {/* Accounts Tab */}
-        <Link
+        <button
          to="#"
           className={`flex items-center p-3 cursor-pointer transition w-full ${
             activeTab === "Accounts"
@@ -60,9 +79,9 @@ const SideBar = () => {
         >
           <FaUser className="text-3xl ml-[18px] " />
           <p className="ml-3">Accounts</p>
-        </Link>
+        </button>
         {/* Investment Tab */}
-        <Link
+        <button
           to="#"
           className={`flex items-center p-3 cursor-pointer transition w-full ${
             activeTab === "Investment"
@@ -73,10 +92,10 @@ const SideBar = () => {
         >
           <RiBarChartHorizontalFill className="text-3xl ml-[18px] " />
           <p className="ml-3">Investment</p>
-        </Link>
+        </button>
         {/* Credit Cards Tab */}
         <Link
-          to="#"
+          to="/credit_cards"
           className={`flex items-center p-3 cursor-pointer transition w-full ${
             activeTab === "Credit Cards"
               ? "text-black font-semibold border-l-4 border-black"
@@ -88,8 +107,8 @@ const SideBar = () => {
           <p className="ml-3">Credit Cards</p>
         </Link>
         {/* Loans Tab */}
-        <Link
-         to="#"
+        <button
+         
           className={`flex items-center p-3 cursor-pointer transition w-full ${
             activeTab === "Loans"
               ? "text-black font-semibold border-l-4 border-black"
@@ -99,10 +118,10 @@ const SideBar = () => {
         >
           <PiHandCoinsBold className="text-3xl ml-[18px] " />
           <p className="ml-3">Loans</p>
-        </Link>
+        </button>
         {/* Services Tab */}
-        <Link
-         to="#"
+        <button
+         
           className={`flex items-center p-3 cursor-pointer transition w-full ${
             activeTab === "Services"
               ? "text-black font-semibold border-l-4 border-black"
@@ -112,10 +131,10 @@ const SideBar = () => {
         >
           <MdOutlineDesignServices className="text-3xl ml-[18px] " />
           <p className="ml-3">Services</p>
-        </Link>
+        </button>
         {/* My Privileges Tab */}
-        <Link
-          to="#"
+        <button
+          
           className={`flex items-center p-3 cursor-pointer transition w-full ${
             activeTab === "My Privileges"
               ? "text-black font-semibold border-l-4 border-black"
@@ -125,7 +144,7 @@ const SideBar = () => {
         >
           <PiLightbulbFill className="text-3xl ml-[18px] " />
           <p className="ml-3">My Privileges</p>
-        </Link>
+        </button>
         {/* Settings Tab */}
         <Link
           to="/settings"

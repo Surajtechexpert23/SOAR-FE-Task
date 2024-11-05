@@ -42,7 +42,7 @@ const PieChart = () => {
         },
         formatter: (value) => {
           // Return the label with percentage
-          return `${value}%`;
+          return `${value==20 ? "20% \nInvestment" : value == 30 ? "30% \nEntertainment" : value == 15 ? "15% \nBill Expense" : '35% \nOthers'}`;
         },
       },
     },

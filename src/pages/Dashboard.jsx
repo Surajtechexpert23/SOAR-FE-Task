@@ -6,11 +6,34 @@ import { PiPaypalLogo } from "react-icons/pi";
 import TransactionItem from "../common/TransactionItem";
 import BarChart from "../components/chart/BarChart";
 import PieChart from "../components/chart/PieChart";
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import QuickTransfer from "../common/QuickTransfer";
+import LineChart from "../components/chart/LineChart";
 
 const Dashboard = () => {
+  const responsive = {
+    superLargeDesktop: {
+      breakpoint: { max: 4000, min: 3000 },
+
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 4,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 3,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 2,
+    },
+  };
   return (
     <>
-      <div className="grid lg:grid-cols-6 md:grid-cols-1 lg:gap-10 ">
+      <div className="grid grid-cols-1 lg:grid-cols-6 md:grid-cols-1 lg:gap-10 ">
         {/* Row 1 */}
 
         {/* Grid Column 1 */}
@@ -47,8 +70,8 @@ const Dashboard = () => {
 
         {/* Grid Column 2 */}
         <div className="col-span-2  md:w-full">
-          <h2 className="text-lg font-medium">Recent Transaction</h2>
-          <div className="rounded-xl p-8 bg-white shadow-lg mt-5 space-y-5 border">
+          <h2 className="text-xl font-medium">Recent Transaction</h2>
+          <div className="rounded-xl p-8 bg-white shadow-sm mt-5 space-y-5 border">
             <TransactionItem
               icon={<CiCreditCard1 className="text-3xl text-yellow-600" />}
               title="Deposit from my card"
@@ -82,7 +105,7 @@ const Dashboard = () => {
         <div className="col-span-4  md:w-full">
           <div className="flex flex-col justify-between w-full">
             <h2 className="text-xl font-medium">Weekly Activity</h2>
-            <div className="bg-white shadow-lg px-4 py-2 border rounded-2xl mt-5">
+            <div className="bg-white shadow-sm px-4 py-2 border rounded-2xl mt-5 lg:h-[500px] w-full ">
               <BarChart />
             </div>
           </div>
@@ -91,9 +114,97 @@ const Dashboard = () => {
         {/* Grid Column 2 */}
         <div className="col-span-2  md:w-full">
           {/* Content for Column 2 can go here */}
-          <h2 className="text-lg font-medium">Expense Statistics</h2>
-          <div className="bg-white shadow-lg p-10 border rounded-2xl mt-5">
+          <h2 className="text-xl font-medium">Expense Statistics</h2>
+          <div className="bg-white shadow-sm p-10 border rounded-2xl mt-5 lg:h-[500px] flex justify-center">
             <PieChart />
+          </div>
+        </div>
+
+        {/* Row 3 */}
+
+        {/* Grid Column 1 */}
+        <div className="col-span-3  md:w-full">
+          <div className="flex flex-col justify-between w-full">
+            <h2 className="text-xl font-medium">Weekly Activity</h2>
+            <div className="bg-white shadow-sm px-4 py-2 border rounded-2xl mt-5 h-[300px] w-full ">
+              <Carousel responsive={responsive} className="mt-10">
+                <QuickTransfer
+                  url="https://i.pravatar.cc/50?u=1"
+                  name="Livia Bator"
+                  position="CEO"
+                  extra_css="font-bold"
+                />
+                <QuickTransfer
+                  url="https://i.pravatar.cc/50?u=2"
+                  name="Randy Press"
+                  position="Director"
+                />
+                <QuickTransfer
+                  url="https://i.pravatar.cc/50?u=3"
+                  name="Workman"
+                  position="Designer"
+                />
+                <QuickTransfer
+                  url="https://i.pravatar.cc/50?u=4"
+                  name="Workman"
+                  position="Designer"
+                />
+                <QuickTransfer
+                  url="https://i.pravatar.cc/50?u=5"
+                  name="Workman"
+                  position="Designer"
+                />
+              </Carousel>
+
+              <div className="flex flex-col justify-between items-center mt-5 lg:mt-10 md:mt-8 lg:mx-14 xl:flex-row lg:flex-row md:flex-col sm:flex-col">
+                <p className="text-md">Write Amount</p>
+                <div class="relative mt-6">
+                  <input
+                    type="text"
+                    disabled
+                    value="525.50"
+                    class="block w-full rounded-full border border-neutral-300 bg-transparent py-4 pl-6 pr-20 text-base/6 text-neutral-950 ring-4 ring-transparent transition placeholder:text-neutral-500 focus:border-neutral-950 focus:outline-none bg-gray-200 text-gray-400"
+                  />
+                  <div class="absolute inset-y-0.5 right-0 flex justify-end">
+                    <div class="relative group">
+                      <button
+                        type="submit"
+                        aria-label="Submit"
+                        class="relative inline-block p-px font-semibold leading-6 text-white bg-neutral-950  cursor-pointer rounded-full shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95"
+                      >
+                        <span class="absolute inset-0 rounded-full bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
+
+                        <span class="relative z-10 block px-6 py-3 rounded-full bg-neutral-950">
+                          <div class="relative z-10 flex items-center space-x-2">
+                            <span class="text-lg transition-all duration-500 group-hover:translate-x-1">
+                              Send
+                            </span>
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              class="w-6 h-6 transition-transform duration-500 group-hover:translate-x-1"
+                              viewBox="0 0 1792 1824"
+                            >
+                              <path
+                                fill="currentColor"
+                                d="M1764 43q33 24 27 64l-256 1536q-5 29-32 45q-14 8-31 8q-11 0-24-5l-527-215l-298 327q-18 21-47 21q-14 0-23-4q-19-7-30-23.5t-11-36.5v-452L40 1115q-37-14-40-55q-3-39 32-59L1696 41q35-21 68 2m-342 1499l221-1323l-1434 827l336 137l863-639l-478 797z"
+                              ></path>
+                            </svg>
+                          </div>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Grid Column 2 */}
+        <div className="col-span-3  md:w-full">
+          <h2 className="text-xl font-medium">Balance History</h2>
+          <div className="bg-white shadow-sm p-10 border rounded-2xl my-5 h-[300px]">
+            <LineChart />
           </div>
         </div>
       </div>

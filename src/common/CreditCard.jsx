@@ -11,7 +11,7 @@ const CreditCard = ({
 }) => {
   return (
     <div
-      className={`rounded-2xl shadow-lg ${
+      className={`rounded-2xl shadow-sm ${
         isBlack ? "bg-black text-white" : "bg-white text-black border"
       }`}
     >
@@ -38,8 +38,8 @@ const CreditCard = ({
 
       <div
         className={` flex justify-between items-center ${
-          isBlack ? "bg-gray-700" : "border-t-2"
-        } p-5 px-8 rounded-xl`}
+          isBlack ? "bg-gray-700" : "border-t"
+        } p-5 px-8 rounded-b-xl`}
       >
         <p className="text-sm ">{cardNumber}</p>
         <RiMastercardFill className="text-5xl" />
