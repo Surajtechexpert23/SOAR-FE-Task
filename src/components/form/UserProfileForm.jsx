@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import TextInput from "../../common/TextInput";
-import ToastNotifications from "../../common/ToastNotifications";
+import TextInput from "@/common/TextInput";
+import ToastNotifications from "@/common/ToastNotifications";
 
-import useToast from "../../hooks/useToast";
+import useToast from "@/hooks/useToast";
 
 const UserProfileForm = () => {
 

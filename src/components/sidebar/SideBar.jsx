@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-import Logo from "../../assets/Logo.png";
+import Logo from "@/assets/Logo.png";
 
 import { TiHome } from "react-icons/ti";
 import { FaMoneyBill, FaUser, FaRegCreditCard } from "react-icons/fa";

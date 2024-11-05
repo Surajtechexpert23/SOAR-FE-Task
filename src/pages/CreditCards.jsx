@@ -1,5 +1,5 @@
 import React from "react";
-import CreditCard from "../common/CreditCard";
+import CreditCard from "@/common/CreditCard";
 
 const CreditCards = () => {
   return (

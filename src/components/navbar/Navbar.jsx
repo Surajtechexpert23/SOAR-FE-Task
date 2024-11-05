@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
+
 import { HiMenu, HiSearch, HiCog, HiBell } from "react-icons/hi";
 
 const NavBar = ({ onToggle }) => {

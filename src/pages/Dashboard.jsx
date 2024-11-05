@@ -3,19 +3,19 @@ import { Link } from "react-router-dom";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-import CreditCard from "../common/CreditCard";
-import TransactionItem from "../common/TransactionItem";
-import ToastNotifications from "../common/ToastNotifications";
-import QuickTransfer from "../common/QuickTransfer";
+import CreditCard from "@/common/CreditCard";
+import TransactionItem from "@/common/TransactionItem";
+import ToastNotifications from "@/common/ToastNotifications";
+import QuickTransfer from "@/common/QuickTransfer";
 
 import { CiCreditCard1, CiBadgeDollar } from "react-icons/ci";
 import { PiPaypalLogo } from "react-icons/pi";
 
-import BarChart from "../components/chart/BarChart";
-import PieChart from "../components/chart/PieChart";
-import LineChart from "../components/chart/LineChart";
+import BarChart from "@/components/chart/BarChart";
+import PieChart from "@/components/chart/PieChart";
+import LineChart from "@/components/chart/LineChart";
 
-import useToast from "../hooks/useToast";
+import useToast from "@/hooks/useToast";
 
 const Dashboard = () => {
   const { showToast } = useToast();

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UserProfileForm from "../components/form/UserProfileForm";
+import UserProfileForm from "@/components/form/UserProfileForm";
 
 const Settings = () => {
   const [activeTab, setActiveTab] = useState("Edit Profile");
