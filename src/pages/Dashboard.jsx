@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import CreditCard from "../common/CreditCard";
 import { CiCreditCard1, CiBadgeDollar } from "react-icons/ci";
@@ -11,7 +11,12 @@ import "react-multi-carousel/lib/styles.css";
 import QuickTransfer from "../common/QuickTransfer";
 import LineChart from "../components/chart/LineChart";
 
+import ToastNotifications from "../common/ToastNotifications";
+import useToast from "../hooks/useToast";
+
 const Dashboard = () => {
+  const { showToast } = useToast();
+
   const responsive = {
     superLargeDesktop: {
       breakpoint: { max: 4000, min: 3000 },
@@ -31,6 +36,24 @@ const Dashboard = () => {
       items: 2,
     },
   };
+  const [amount, setAmount] = useState("525.50"); // Initial state for the input
+
+  const handleInputChange = (e) => {
+    setAmount(e.target.value); // Update the state with the input value
+  };
+
+  const handleSubmit = () => {
+    const fetchData = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        const success = true;
+        success
+          ? resolve("Data fetched successfully!")
+          : reject("Failed to fetch data.");
+      }, 2000);
+    });
+
+    showToast(fetchData);
+  };
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-6 md:grid-cols-1 lg:gap-10 ">
@@ -42,9 +65,9 @@ const Dashboard = () => {
             <h2 className="text-xl font-medium">My Cards</h2>
             <Link
               to="/credit_cards"
-              className="flex items-center cursor-pointer transition"
+              className="flex py-1 items-center font-bold cursor-pointer text-gray-500 transition-transform duration-7000 ease-in-out hover:px-8 hover:bg-gray-400 hover:rounded-xl hover:text-white"
             >
-              See all
+              See All
             </Link>
           </div>
 
@@ -157,19 +180,20 @@ const Dashboard = () => {
               </Carousel>
 
               <div className="flex flex-col justify-between items-center mt-5 lg:mt-10 md:mt-8 lg:mx-14 xl:flex-row lg:flex-row md:flex-col sm:flex-col">
-                <p className="text-md">Write Amount</p>
-                <div class="relative mt-6">
+                <p className="text-md">Write Your Amount</p>
+                <div class="relative ">
                   <input
-                    type="text"
-                    disabled
-                    value="525.50"
-                    class="block w-full rounded-full border border-neutral-300 bg-transparent py-4 pl-6 pr-20 text-base/6 text-neutral-950 ring-4 ring-transparent transition placeholder:text-neutral-500 focus:border-neutral-950 focus:outline-none bg-gray-200 text-gray-400"
+                    type="number"
+                    value={amount}
+                    onChange={handleInputChange} // Set the input change handler
+                    class="block w-full rounded-full border border-neutral-300 bg-transparent py-4 pl-6 pr-20 text-base/6 text-neutral-950 ring-4 ring-transparent transition placeholder:text-neutral-500 focus:border-neutral-950 focus:outline-none border bg-gray-300 text-gray-400"
                   />
                   <div class="absolute inset-y-0.5 right-0 flex justify-end">
                     <div class="relative group">
                       <button
                         type="submit"
                         aria-label="Submit"
+                        onClick={handleSubmit} // Set the submit handler
                         class="relative inline-block p-px font-semibold leading-6 text-white bg-neutral-950  cursor-pointer rounded-full shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95"
                       >
                         <span class="absolute inset-0 rounded-full bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
@@ -208,6 +232,8 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
+      <ToastNotifications />
     </>
   );
 };

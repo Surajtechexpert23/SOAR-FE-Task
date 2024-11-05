@@ -4,9 +4,7 @@ import SideBar from "./components/sidebar/SideBar";
 import NavBar from "./components/navbar/Navbar";
 import Dashboard from "./pages/Dashboard";
 import CreditCards from "./pages/CreditCards";
-
-// Dummy components for different routes
-const Settings = () => <div>Settings Content</div>;
+import Settings from "./pages/Settings";
 
 const App = () => {
   return (
