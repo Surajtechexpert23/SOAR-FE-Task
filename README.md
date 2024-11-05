@@ -2,7 +2,6 @@
 
 This project is an Admin Dashboard built with Vite and React. It utilizes React Hook Form for form validation, React Icons for icons, Chart.js for graphing, Tailwind CSS for styling, React Multi Carousel for the slider, and React Toastify for message alerts.
 
-
 ## Features
 
 - **Form Validation:** Implemented using React Hook Form for efficient and flexible form handling.
@@ -58,7 +57,8 @@ Make sure you have [Node.js](https://nodejs.org/) installed on your machine.
 
 ## Usage
 
-You can now use the admin dashboard. Explore the various features such as form handling, icon usage, and data visualization with graphs.
+You can now use the admin dashboard. Explore the various features such as form handling, icon usage, data visualization with graphs, the responsive slider, and message alerts.
+
 
 ## Acknowledgements
 
@@ -68,3 +68,5 @@ You can now use the admin dashboard. Explore the various features such as form h
 - [React Icons](https://react-icons.github.io/react-icons/) - A collection of popular icons for React.
 - [Chart.js](https://www.chartjs.org/) - Simple yet flexible JavaScript charting for designers and developers.
 - [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework for creating custom designs.
+- [React Multi Carousel](https://github.com/Xolvio/react-multi-carousel) - Responsive carousel component for React.
+- [React Toastify](https://fkhadra.github.io/react-toastify/) - Elegant, customizable toast notifications for React.
