@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+
 import Logo from "../../assets/Logo.png";
+
 import { TiHome } from "react-icons/ti";
 import { FaMoneyBill, FaUser, FaRegCreditCard } from "react-icons/fa";
 import { RiBarChartHorizontalFill } from "react-icons/ri";
@@ -32,7 +34,7 @@ const SideBar = ({ isOpen, onToggle }) => {
     setActiveTab(tabName);
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
     if (isMobile) {
-      onToggle(); // Close the sidebar only on mobile
+      onToggle(); 
     }
   };
 

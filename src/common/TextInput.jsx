@@ -1,4 +1,3 @@
-// components/TextInput.js
 import React from 'react';
 
 const TextInput = ({ label, name, register, errors, type = "text", placeholder }) => {

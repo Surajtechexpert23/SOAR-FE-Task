@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+
 import SideBar from "./components/sidebar/SideBar";
 import NavBar from "./components/navbar/Navbar";
+
 import Dashboard from "./pages/Dashboard";
 import CreditCards from "./pages/CreditCards";
 import Settings from "./pages/Settings";

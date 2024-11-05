@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useForm } from "react-hook-form";
+
 import TextInput from "../../common/TextInput";
 import ToastNotifications from "../../common/ToastNotifications";
+
 import useToast from "../../hooks/useToast";
-import { useForm } from "react-hook-form";
 
 const UserProfileForm = () => {
 
@@ -25,7 +27,7 @@ const UserProfileForm = () => {
       }, 2000);
     });
 
-    showToast(fetchData); // Show the toast notification
+    showToast(fetchData); 
     setFormData(data)    
   };
 
@@ -35,10 +37,10 @@ const UserProfileForm = () => {
         <div className="grid md:grid-cols-3 gap-6">
           {/* Avatar Column */}
           <div className="flex flex-col justify-start items-center  ">
-            {/* You can replace the below image src with the user's avatar URL */}
+      
             <div className="w-32 h-32 rounded-full bg-gray-200 flex items-center justify-center">
               <img
-                src="https://i.pravatar.cc/150?u=5" // Replace with your avatar URL
+                src="https://i.pravatar.cc/150?u=5" 
                 alt="Avatar"
                 className="w-full h-full rounded-full object-cover"
               />

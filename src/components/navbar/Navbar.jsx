@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom"; // Import useLocation hook
-import { HiMenu, HiSearch, HiCog, HiBell, HiUserCircle } from "react-icons/hi";
+import { useLocation } from "react-router-dom"; 
+import { HiMenu, HiSearch, HiCog, HiBell, } from "react-icons/hi";
 
 const NavBar = ({ onToggle }) => {
   const [currentLocation, setCurrentLocation] = useState("");

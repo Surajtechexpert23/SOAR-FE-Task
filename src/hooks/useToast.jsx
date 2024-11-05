@@ -1,5 +1,3 @@
-// useToast.js
-
 import { toast } from "react-toastify";
 
 const useToast = () => {

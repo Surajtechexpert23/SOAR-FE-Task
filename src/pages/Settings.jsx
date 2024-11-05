@@ -5,7 +5,6 @@ const Settings = () => {
   const [activeTab, setActiveTab] = useState("Edit Profile");
 
   const handleTabClick = (tabName) => {
-    // Allow click only on active tabs
     if (tabName === "Preferences" || tabName === "Security") {
       return; 
     }
