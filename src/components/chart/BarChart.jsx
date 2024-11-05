@@ -10,7 +10,6 @@ import {
   Legend,
 } from "chart.js";
 
-// Register necessary components
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -21,14 +20,13 @@ ChartJS.register(
 );
 
 const WeeklyActivityChart = () => {
-  // Data for the bar chart
   const data = {
-    labels: ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"], // Days of the week
+    labels: ["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"], 
     datasets: [
       {
         label: "Withdraw",
-        data: [300, 250, 300, 450, 215, 320, 420], // Example data for Withdraw
-        backgroundColor: "rgba(0, 0, 0, 0.7)", // Black color with some transparency
+        data: [300, 250, 300, 450, 215, 320, 420], 
+        backgroundColor: "rgba(0, 0, 0, 0.7)",  
         borderColor: "rgba(0, 0, 0, 1)",
         borderWidth: 1,
         borderRadius: Number.MAX_VALUE,
@@ -36,8 +34,8 @@ const WeeklyActivityChart = () => {
       },
       {
         label: "Deposit",
-        data: [205, 110, 400, 150, 315, 175, 300], // Example data for Deposit
-        backgroundColor: "rgba(59, 130, 246, 0.7)", // Blue color with some transparency
+        data: [205, 110, 400, 150, 315, 175, 300],  
+        backgroundColor: "rgba(59, 130, 246, 0.7)", 
         borderColor: "rgba(59, 130, 246, 1)",
         borderWidth: 1,
         borderRadius: Number.MAX_VALUE,
@@ -46,42 +44,64 @@ const WeeklyActivityChart = () => {
     ],
   };
 
-  // Options for the bar chart
   const options = {
     responsive: true,
+    maintainAspectRatio: false, 
     scales: {
       x: {
         grid: {
-          display: false, // Hides grid lines on the x-axis
+          display: false, 
         },
+        ticks: {
+          font: {
+            size: 12, 
+          },
+        },
+        barPercentage: 0.2, 
+        categoryPercentage: 0.1,
       },
       y: {
         beginAtZero: true,
         grid: {
-          drawBorder: false, // Hides the border grid line
+          drawBorder: false, 
+        },
+        ticks: {
+          font: {
+            size: 12, 
+          },
         },
       },
     },
     plugins: {
       legend: {
-        position: "top", // Positions the legend at the top
-        align: "end", // Aligns the legend to the top-right corner
+        position: "top",
+        align: "end", 
         labels: {
-          usePointStyle: true, // Use point style for legend
+          usePointStyle: true, 
+          font: {
+            size: 12, 
+          },
         },
       },
       datalabels: {
-        display: false, // This will hide data labels if you are using ChartDataLabels plugin
+        display: false, 
       },
     },
     layout: {
       padding: {
-        top: 20, // Adds extra padding to create space between the legend and the chart
+        top: 20,
+        left: 10,
+        right: 10,
+        bottom: 10,
       },
     },
   };
 
-  return <Bar data={data} options={options} />;
+  return (
+    <div className="relative w-full h-72 md:h-full"> {/* Responsive height with Tailwind */}
+      <Bar data={data} options={options} />
+    </div>
+  );
 };
 
 export default WeeklyActivityChart;

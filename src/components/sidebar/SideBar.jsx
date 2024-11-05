@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import Logo from "../../assets/Logo.png";
 import { TiHome } from "react-icons/ti";
-import { FaMoneyBill } from "react-icons/fa";
-import { FaUser, FaRegCreditCard } from "react-icons/fa6";
+import { FaMoneyBill, FaUser, FaRegCreditCard } from "react-icons/fa";
 import { RiBarChartHorizontalFill } from "react-icons/ri";
 import { PiHandCoinsBold, PiLightbulbFill } from "react-icons/pi";
 import { MdOutlineDesignServices } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
 
-const SideBar = () => {
+const SideBar = ({ isOpen, onToggle }) => {
   const location = useLocation();
   const [activeTab, setActiveTab] = useState("Dashboard");
 
@@ -24,24 +23,42 @@ const SideBar = () => {
       case "/settings":
         setActiveTab("Settings");
         break;
-      // Add other cases as necessary
       default:
         setActiveTab("Dashboard");
     }
-  }, [location.pathname]); // Re-run effect when the pathname changes
-
+  }, [location.pathname]);
 
   const handleTabClick = (tabName) => {
     setActiveTab(tabName);
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+    if (isMobile) {
+      onToggle(); // Close the sidebar only on mobile
+    }
   };
 
   return (
-    <div className="min-h-screen shadow-xl pt-4 w-[full] xl:w-[15%] lg:w-[25%] md:w-[30%] sm:w-[35%]">
-      <div className="flex items-center w-full justify-center">
-        <img src={Logo} alt="logo" className="mr-12" />
+    <div
+      className={`fixed inset-y-0 left-0 bg-white shadow-lg transform transition-transform duration-300 ${
+        isOpen ? "translate-x-0 z-10" : "-translate-x-full"
+      } lg:translate-x-0 lg:w-[15%] md:w-[35%] z-10`}
+    >
+      <div className="flex items-center w-full justify-center mt-8">
+        <img src={Logo} alt="logo" className="mx-8 md:w-48 sm:w-32 " />
+        <button
+          class="cursor-pointer duration-200 hover:scale-125 active:scale-100 bg-white rounded-full border shadow-md mr-5 lg:hidden"
+          onClick={onToggle}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="40px"
+            height="40px"
+            viewBox="0 0 24 24"
+          >
+            <path fill="currentColor" d="m14 7l-5 5l5 5z" />
+          </svg>
+        </button>
       </div>
       <div className="flex flex-col mt-8 space-y-2">
-        {/* Dashboard Tab */}
         <Link
           to="/dashboard"
           className={`flex items-center p-3 cursor-pointer transition w-full ${
@@ -51,12 +68,10 @@ const SideBar = () => {
           }`}
           onClick={() => handleTabClick("Dashboard")}
         >
-          <TiHome className="text-3xl ml-[18px] " />
+          <TiHome className="text-3xl ml-[18px]" />
           <p className="ml-3">Dashboard</p>
         </Link>
-        {/* Transactions Tab */}
         <button
-          to="#"
           className={`flex items-center p-3 cursor-pointer transition w-full ${
             activeTab === "Transactions"
               ? "text-black font-semibold border-l-4 border-black"
@@ -64,12 +79,10 @@ const SideBar = () => {
           }`}
           onClick={() => handleTabClick("Transactions")}
         >
-          <FaMoneyBill className="text-3xl ml-[18px] rotate-90 " />
+          <FaMoneyBill className="text-3xl ml-[18px] rotate-90" />
           <p className="ml-3">Transactions</p>
         </button>
-        {/* Accounts Tab */}
         <button
-         to="#"
           className={`flex items-center p-3 cursor-pointer transition w-full ${
             activeTab === "Accounts"
               ? "text-black font-semibold border-l-4 border-black"
@@ -77,12 +90,10 @@ const SideBar = () => {
           }`}
           onClick={() => handleTabClick("Accounts")}
         >
-          <FaUser className="text-3xl ml-[18px] " />
+          <FaUser className="text-3xl ml-[18px]" />
           <p className="ml-3">Accounts</p>
         </button>
-        {/* Investment Tab */}
         <button
-          to="#"
           className={`flex items-center p-3 cursor-pointer transition w-full ${
             activeTab === "Investment"
               ? "text-black font-semibold border-l-4 border-black"
@@ -90,10 +101,9 @@ const SideBar = () => {
           }`}
           onClick={() => handleTabClick("Investment")}
         >
-          <RiBarChartHorizontalFill className="text-3xl ml-[18px] " />
+          <RiBarChartHorizontalFill className="text-3xl ml-[18px]" />
           <p className="ml-3">Investment</p>
         </button>
-        {/* Credit Cards Tab */}
         <Link
           to="/credit_cards"
           className={`flex items-center p-3 cursor-pointer transition w-full ${
@@ -103,12 +113,10 @@ const SideBar = () => {
           }`}
           onClick={() => handleTabClick("Credit Cards")}
         >
-          <FaRegCreditCard className="text-3xl ml-[18px] " />
+          <FaRegCreditCard className="text-3xl ml-[18px]" />
           <p className="ml-3">Credit Cards</p>
         </Link>
-        {/* Loans Tab */}
         <button
-         
           className={`flex items-center p-3 cursor-pointer transition w-full ${
             activeTab === "Loans"
               ? "text-black font-semibold border-l-4 border-black"
@@ -116,12 +124,10 @@ const SideBar = () => {
           }`}
           onClick={() => handleTabClick("Loans")}
         >
-          <PiHandCoinsBold className="text-3xl ml-[18px] " />
+          <PiHandCoinsBold className="text-3xl ml-[18px]" />
           <p className="ml-3">Loans</p>
         </button>
-        {/* Services Tab */}
         <button
-         
           className={`flex items-center p-3 cursor-pointer transition w-full ${
             activeTab === "Services"
               ? "text-black font-semibold border-l-4 border-black"
@@ -129,12 +135,10 @@ const SideBar = () => {
           }`}
           onClick={() => handleTabClick("Services")}
         >
-          <MdOutlineDesignServices className="text-3xl ml-[18px] " />
+          <MdOutlineDesignServices className="text-3xl ml-[18px]" />
           <p className="ml-3">Services</p>
         </button>
-        {/* My Privileges Tab */}
         <button
-          
           className={`flex items-center p-3 cursor-pointer transition w-full ${
             activeTab === "My Privileges"
               ? "text-black font-semibold border-l-4 border-black"
@@ -142,10 +146,9 @@ const SideBar = () => {
           }`}
           onClick={() => handleTabClick("My Privileges")}
         >
-          <PiLightbulbFill className="text-3xl ml-[18px] " />
+          <PiLightbulbFill className="text-3xl ml-[18px]" />
           <p className="ml-3">My Privileges</p>
         </button>
-        {/* Settings Tab */}
         <Link
           to="/settings"
           className={`flex items-center p-3 cursor-pointer transition w-full ${
@@ -155,7 +158,7 @@ const SideBar = () => {
           }`}
           onClick={() => handleTabClick("Settings")}
         >
-          <IoMdSettings className="text-3xl ml-[18px] " />
+          <IoMdSettings className="text-3xl ml-[18px]" />
           <p className="ml-3">Settings</p>
         </Link>
       </div>

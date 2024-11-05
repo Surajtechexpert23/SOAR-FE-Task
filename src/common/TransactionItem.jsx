@@ -6,7 +6,7 @@ const TransactionItem = ({ icon, title, date, amount, amountType,iconbg }) => {
       <div className={`flex justify-center items-center ${iconbg} w-14 h-14 rounded-full transition duration-600`}>
         {icon}
       </div>
-      <div className="flex flex-col ml-10">
+      <div className="flex flex-col ml-2 :ml-10">
         <p>{title}</p>
         <p className="text-gray-500">{date}</p>
       </div>

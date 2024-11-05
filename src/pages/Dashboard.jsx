@@ -56,7 +56,7 @@ const Dashboard = () => {
   };
   return (
     <>
-      <div className="grid grid-cols-1 lg:grid-cols-6 md:grid-cols-1 lg:gap-10 ">
+      <div className="p-6 pt-8 grid grid-cols-1 lg:grid-cols-6 md:grid-cols-1 lg:gap-10 ">
         {/* Row 1 */}
 
         {/* Grid Column 1 */}
@@ -93,11 +93,13 @@ const Dashboard = () => {
 
         {/* Grid Column 2 */}
         <div className="col-span-2  md:w-full">
-          <h2 className="text-xl font-medium">Recent Transaction</h2>
-          <div className="rounded-xl p-8 bg-white shadow-sm mt-5 space-y-5 border">
+          <h2 className="text-xl font-medium mt-5 md:mt-0">
+            Recent Transaction
+          </h2>
+          <div className="rounded-xl md:p-8 p-4 bg-white shadow-sm mt-5 space-y-10 md:space-y-5 border">
             <TransactionItem
               icon={<CiCreditCard1 className="text-3xl text-yellow-600" />}
-              title="Deposit from my card"
+              title="Deposited in card"
               date="28 January 2021"
               amount="850"
               amountType="negative"
@@ -127,8 +129,10 @@ const Dashboard = () => {
         {/* Grid Column 1 */}
         <div className="col-span-4  md:w-full">
           <div className="flex flex-col justify-between w-full">
-            <h2 className="text-xl font-medium">Weekly Activity</h2>
-            <div className="bg-white shadow-sm px-4 py-2 border rounded-2xl mt-5 lg:h-[500px] w-full ">
+            <h2 className="text-xl font-medium mt-5 md:mt-0">
+              Weekly Activity
+            </h2>
+            <div className="bg-white shadow-sm px-4 py-2 border rounded-2xl mt-5 min-h-[284px] lg:h-[500px] w-full ">
               <BarChart />
             </div>
           </div>
@@ -137,8 +141,10 @@ const Dashboard = () => {
         {/* Grid Column 2 */}
         <div className="col-span-2  md:w-full">
           {/* Content for Column 2 can go here */}
-          <h2 className="text-xl font-medium">Expense Statistics</h2>
-          <div className="bg-white shadow-sm p-10 border rounded-2xl mt-5 lg:h-[500px] flex justify-center">
+          <h2 className="text-xl font-medium mt-5 md:mt-0">
+            Expense Statistics
+          </h2>
+          <div className="bg-white shadow-sm p-5 border rounded-2xl mt-5 lg:h-[500px] flex justify-center items-center">
             <PieChart />
           </div>
         </div>
@@ -148,7 +154,9 @@ const Dashboard = () => {
         {/* Grid Column 1 */}
         <div className="col-span-3  md:w-full">
           <div className="flex flex-col justify-between w-full">
-            <h2 className="text-xl font-medium">Weekly Activity</h2>
+            <h2 className="text-xl font-medium mt-5 md:mt-0">
+              Weekly Activity
+            </h2>
             <div className="bg-white shadow-sm px-4 py-2 border rounded-2xl mt-5 h-[300px] w-full ">
               <Carousel responsive={responsive} className="mt-10">
                 <QuickTransfer
@@ -181,12 +189,12 @@ const Dashboard = () => {
 
               <div className="flex flex-col justify-between items-center mt-5 lg:mt-10 md:mt-8 lg:mx-14 xl:flex-row lg:flex-row md:flex-col sm:flex-col">
                 <p className="text-md">Write Your Amount</p>
-                <div class="relative ">
+                <div class="relative mt-4">
                   <input
                     type="number"
                     value={amount}
                     onChange={handleInputChange} // Set the input change handler
-                    class="block w-full rounded-full border border-neutral-300 bg-transparent py-4 pl-6 pr-20 text-base/6 text-neutral-950 ring-4 ring-transparent transition placeholder:text-neutral-500 focus:border-neutral-950 focus:outline-none border bg-gray-300 text-gray-400"
+                    class="block w-full rounded-full border border-neutral-300 bg-transparent py-4 pl-6 pr-20 text-base/6 text-neutral-950 ring-4 ring-transparent transition placeholder:text-neutral-500 focus:border-neutral-950 focus:outline-none border bg-gray-300 text-gray-400 "
                   />
                   <div class="absolute inset-y-0.5 right-0 flex justify-end">
                     <div class="relative group">
@@ -198,8 +206,8 @@ const Dashboard = () => {
                       >
                         <span class="absolute inset-0 rounded-full bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
 
-                        <span class="relative z-10 block px-6 py-3 rounded-full bg-neutral-950">
-                          <div class="relative z-10 flex items-center space-x-2">
+                        <span class="relative  block px-6 py-3 rounded-full bg-neutral-950">
+                          <div class="relative  flex items-center space-x-2">
                             <span class="text-lg transition-all duration-500 group-hover:translate-x-1">
                               Send
                             </span>
@@ -226,8 +234,8 @@ const Dashboard = () => {
 
         {/* Grid Column 2 */}
         <div className="col-span-3  md:w-full">
-          <h2 className="text-xl font-medium">Balance History</h2>
-          <div className="bg-white shadow-sm p-10 border rounded-2xl my-5 h-[300px]">
+          <h2 className="text-xl font-medium mt-5 md:mt-0">Balance History</h2>
+          <div className="bg-white shadow-sm p-5 border rounded-2xl my-5 h-[300px]">
             <LineChart />
           </div>
         </div>

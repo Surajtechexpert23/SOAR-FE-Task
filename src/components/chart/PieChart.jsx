@@ -8,11 +8,9 @@ import {
 } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
-// Register necessary components and plugins
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 const PieChart = () => {
-  // Data for the Pie Chart
   const data = {
     labels: ['20% Investment', '30% Entertainment', '15% Bill Expense', '35% Others'],
     datasets: [
@@ -25,30 +23,38 @@ const PieChart = () => {
     ],
   };
 
-  // Options for the Pie Chart
   const options = {
     responsive: true,
     plugins: {
       legend: {
-        display: false, // Hide the legend if not needed
+        display: false,
       },
       datalabels: {
-        anchor: 'center', // Place labels in the center of each slice
-        align: 'center',  // Align labels to the center
-        color: '#fff',    // Color of the labels
+        anchor: 'center',
+        align: 'center',
+        color: '#fff',
         font: {
           weight: 'bold',
-          size: 14,
+          size: 12,
         },
         formatter: (value) => {
-          // Return the label with percentage
-          return `${value==20 ? "20% \nInvestment" : value == 30 ? "30% \nEntertainment" : value == 15 ? "15% \nBill Expense" : '35% \nOthers'}`;
+          return `${value === 20 ? "20% \nInvestment" : value === 30 ? "30% \nEntertainment" : value === 15 ? "15% \nBill\nExpense" : '35% \nOthers'}`;
         },
+      },
+    },
+    elements: {
+      arc: {
+        borderWidth: 2,
+        offset: 40,
       },
     },
   };
 
-  return <Pie data={data} options={options} />;
+  return (
+    <div className="relative w-full h-72 md:h-full flex justify-center items-center">
+      <Pie data={data} options={options} />
+    </div>
+  );
 };
 
 export default PieChart;

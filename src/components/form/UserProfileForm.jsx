@@ -34,7 +34,7 @@ const UserProfileForm = () => {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <div className="grid md:grid-cols-3 gap-6">
           {/* Avatar Column */}
-          <div className="flex flex-col justify-center items-center my-10 ">
+          <div className="flex flex-col justify-start items-center  ">
             {/* You can replace the below image src with the user's avatar URL */}
             <div className="w-32 h-32 rounded-full bg-gray-200 flex items-center justify-center">
               <img

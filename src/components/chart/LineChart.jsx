@@ -11,28 +11,25 @@ import {
   Legend,
 } from 'chart.js';
 
-// Register components from Chart.js
 ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend);
 
 const LineChart = () => {
-  // Corrected and simplified chart data
   const data = {
     labels: ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec', 'Jan'],
     datasets: [
       {
         label: 'Balance History',
-        data: [150, 520, 350, 800, 200, 600, 700], // Your data points
+        data: [150, 520, 350, 800, 200, 600, 700],
         borderColor: 'blue',
-        backgroundColor: 'rgba(128, 0, 128, 0.3)', // Purple color below the line (with some transparency)
+        backgroundColor: 'rgba(128, 0, 128, 0.3)',
         borderWidth: 2,
         pointRadius: 0,
         tension: 0.4,
-        fill: true, // Ensure that the area below the line is filled
+        fill: true,
       },
     ],
   };
 
-  // Chart options
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -51,19 +48,19 @@ const LineChart = () => {
     },
     plugins: {
       legend: {
-        display: false, // Hide the legend
+        display: false,
         labels: {
-          usePointStyle: true, // Use point style for legend
+          usePointStyle: true,
         },
       },
       datalabels: {
-        display: false, // This will hide data labels if you are using ChartDataLabels plugin
+        display: false,
       },
     },
   };
 
   return (
-    <div style={{ height: '250px', width: '100%' }}>
+    <div className="relative w-full h-72 md:h-full">
       <Line data={data} options={options} />
     </div>
   );

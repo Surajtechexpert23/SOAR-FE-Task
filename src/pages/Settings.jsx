@@ -5,6 +5,7 @@ const Settings = () => {
   const [activeTab, setActiveTab] = useState("Edit Profile");
 
   const handleTabClick = (tabName) => {
+    // Allow click only on active tabs
     if (tabName === "Preferences" || tabName === "Security") {
       return; 
     }
@@ -12,10 +13,10 @@ const Settings = () => {
   };
 
   return (
-    <div className="m-5  p-8 bg-white border rounded-xl shadow-md ">
+    <div className="lg:m-10 p-6 bg-white border rounded-xl shadow-md md:p-6 md:pt-8 md:mt-5">
       {/* Tabs */}
-      <div className="flex justify-start space-x-8  pb-2 mb-6">
-      {["Edit Profile", "Preferences", "Security"].map((tabName) => (
+      <div className="flex flex-wrap justify-center md:justify-start space-x-4 pb-2 mb-6">
+        {["Edit Profile", "Preferences", "Security"].map((tabName) => (
           <p
             key={tabName}
             className={`cursor-pointer pb-2 font-bold ${
@@ -25,7 +26,7 @@ const Settings = () => {
             } ${
               tabName === "Preferences" || tabName === "Security"
                 ? "text-gray-300 cursor-not-allowed" // Disabled style
-                : ""
+                : "hover:text-black transition duration-200" // Hover effect for enabled tabs
             }`}
             onClick={() => handleTabClick(tabName)}
           >
