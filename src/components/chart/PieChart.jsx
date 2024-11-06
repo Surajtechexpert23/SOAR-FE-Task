@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Pie } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -11,6 +11,20 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
 ChartJS.register(ArcElement, Tooltip, Legend, ChartDataLabels);
 
 const PieChart = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 1280);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 1280);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   const data = {
     labels: ['20% Investment', '30% Entertainment', '15% Bill Expense', '35% Others'],
     datasets: [
@@ -38,6 +52,7 @@ const PieChart = () => {
           size: 12,
         },
         formatter: (value) => {
+          if (value === 15 && isMobile) return '15% \nBill'; // Hide "Bill Expense" on non-mobile screens
           return `${value === 20 ? "20% \nInvestment" : value === 30 ? "30% \nEntertainment" : value === 15 ? "15% \nBill\nExpense" : '35% \nOthers'}`;
         },
       },
@@ -45,7 +60,7 @@ const PieChart = () => {
     elements: {
       arc: {
         borderWidth: 2,
-        offset: 40,
+        offset: isMobile ? 0 : 40, 
       },
     },
   };
