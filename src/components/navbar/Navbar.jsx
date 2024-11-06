@@ -43,7 +43,7 @@ const NavBar = ({ onToggle }) => {
           <HiBell className="mx-4 text-gray-500 cursor-pointer text-3xl" />
         </div>
         <img
-          src={"https://i.pravatar.cc/50?u=1"}
+          src={"https://i.pravatar.cc/50?u=5"}
           alt="avatar"
           className="rounded-full ml-2"
         />
